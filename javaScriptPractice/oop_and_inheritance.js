@@ -1,62 +1,77 @@
 console.log("---------------------------OOP in JavaScript ---------------------------------------");
 
-
-
-console.log("//----------------------------------1  Object.create(student)--------------------------");
+console.log("//----------------------------------1 Object.create(className)--------------------------");
 var Student = {
     name: "Bimal Parajuli",
     course: "Web Application Programming",
-    studentNo: 985387
+    studentNo: 985387,
+    saygoodbye: function(){
+        console.log("goodbye "+this.name);
+    }
 };
 
 
-console.log("1-------show all the keys");
+Student.sayhello=function(){
+    console.log("hello "+this.name);
+}
+Student.sayhello();
+//create object
+stu = Object.create(Student);
+stu.sayhello();
+
+Student.saygoodbye();
+stu.saygoodbye();
+
+console.log("0-------override--");
+stu.saygoodbye=function(){
+    console.log("see you again "+this.name);
+}
+
+Student.saygoodbye();
+stu.saygoodbye();
+
+console.log("1-------show all the keys in Student---");
 for (var key in Student) {
     console.log(key); // name, course, studentNo
 }
-console.log("2-------show all the keys in detail");
+console.log("2-------show all the keys in detail in Student --");
 console.log(Object.keys(Student)); // [name, course, no]
 
 // Object.create(student)
-stu = Object.create(Student);
-console.log("3-------");
+
+console.log("3-------show Student.name and stu.name");
+console.log(Student.name); // Bimal Parajuli
 console.log(stu.name); // Bimal Parajuli
 console.log("4-------");
 for (var key in stu) {
     console.log(key); // name, course, no
 }
 console.log("5-------");
+console.log(Object.keys(Student)); // ["name", "course", "studentNo"]
 console.log(Object.keys(stu)); // []
 
-delete student.studentNo;
-console.log("6-------");
-console.log(student);
+delete Student.studentNo;
+console.log("6-------delete Student.studentNo;---");
+console.log(Student);//{name: "Bimal Parajuli", course: "Web Application Programming"}
 
 
 console.log("//----------------------------------2 call() apply() bind()-----------------------------");
 var me = {
-    first: 'Asaad ',
-    last: 'Saad ',
+    firstName: 'Asaad ',
+    lastName: 'Saad ',
     getFullName: function () {
-        return this.first + ' ' + this.last;
+        return this.firstName + ' ' + this.lastName;
     }
 }
-var log = function (height, weight) { // ‘this’ refers to the invoker
+var showMe = function (height, weight) { // ‘this’ refers to the invoker
     console.log(this.getFullName() + height + ' ' + weight);
 }
-var logMe = log.bind(me);//tell log which this is, this is me
+var logMe = showMe.bind(me);//tell log which this is, this is me
 logMe('180cm'); // Asaad Saad 180cm undefined
-log.call(me, '180cm', '70kg'); // Asaad Saad 180cm 70kg
-log.apply(me, ['180cm', '70kg']); // Asaad Saad 180cm 70kg
+showMe.call(me, '180cm', '70kg'); // Asaad Saad 180cm 70kg
+showMe.apply(me, ['180cm', '70kg']); // Asaad Saad 180cm 70kg
 
 
-var me = {
-    first: 'Asaad',
-    last: 'Saad',
-    getFullName: function () {
-        return this.first + ' ' + this.last;
-    }
-}
 var you = {
     first: 'Bimal',
     last: 'Parajuli'
@@ -73,7 +88,7 @@ var multipleByThree = multiply.bind({}, 3); // set a = 3
 console.log(multipleByThree(4)); // 12
 
 
-let rectangle = {
+let Rectangle = {
     height: 0,
     width: 0,
     area: function () {
@@ -81,10 +96,10 @@ let rectangle = {
     }
 }
 
-rectangle.circumference = function () {
+Rectangle.circumference = function () {
     return (2 * this.height + 2 * this.width);
 }
-let r = Object.create(rectangle);
+let r = Object.create(Rectangle);
 r.height = 5;
 r.width = 10;
 console.log(r.area());//50
@@ -112,13 +127,13 @@ Person.prototype.teach = function (subject) {
 console.log(teacher.teach('Web Application Programming'));
 
 
-function Student() {
+function Student_2() {
     console.log(this);
     this.university = 'MUM';
     year = '2016';
 }
-var faculty = new Student(); // Person {university: "MUM"} – no year!
-Student.prototype.great = function () {
+var faculty = new Student_2(); // Person {university: "MUM"} – no year!
+Student_2.prototype.great = function () {
     return 'Hi ' + this.university;
 }
 console.log(faculty.great()); // "Hi MUM"
