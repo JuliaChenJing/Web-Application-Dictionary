@@ -1,5 +1,5 @@
 console.log("---------------------------OOP in JavaScript ---------------------------------------");
-http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html
+
 
 console.log("//----------------------------------1 Object.create(className)--------------------------");
 var Student = {
