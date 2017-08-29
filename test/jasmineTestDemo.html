@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Jasmine as a UI</title>
+ 
+        <!-- ensure that all the Jasmine files come before all the Angular files... -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine.css"></link>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine-html.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot.js"></script>
+ 
+        <!-- ensure that you include the core Angular file... -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular.js"></script>
+ 
+        <!-- before you reference the Angular mocks file -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular-mocks.js"></script>
+ 
+    </head>
+
+<body>
+    hello;
+    <script>
+        describe('JavaScript addition operator', function () {
+            it('adds two numbers together', function () {
+                expect(1 + 2).toEqual(3);
+            });
+        });
+
+    
+        describe("A spec", function () {
+            it("is just a function, so it can contain any code", function () {
+                var foo = 0;
+                foo += 1;
+                expect(foo).toEqual(1);
+            });
+
+            it("can have more than one expectation", function () {
+                var foo = 0;
+                foo += 1;
+
+                expect(foo).toEqual(1);
+                expect(true).toEqual(true);
+            });             
+        });
+    </script>
+    <footer>
+        <!--html validator -->
+        <p>
+            <a href="http://validator.w3.org/check/referer">
+				<img src="http://mumstudents.org/cs472/2013-09/images/w3c-html.png" alt="Validate" />
+			</a>
+        </p>
+    </footer>
+</body>
+
+</html>

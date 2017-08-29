@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="floats.css" type="text/css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: yellow;
+      color: purple;
+    }
+
+    p {
+      color: blue;
+    }
+
+    .redColor,.item {
+      color: red;
+    }
+
+    #item {
+      background-color: white;
+      list-style-type: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div style="float:right">Right Content</div>
+  <div style="float:left">Left Content</div>
+  <div style="clear:both">Content</div>
+
+  <p>First</p>
+  <div class="redColor">
+    <p>Second</p>
+    <ul>
+      <li id="item">
+        <p> Third </p>
+      </li>
+    </ul>
+
+  </div>
+
+
+</body>
+
+</html>

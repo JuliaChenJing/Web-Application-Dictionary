@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<style>
+    input[type=text],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width: 50%;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jing Chen (985398)</title>
+    <!-- Bootstrap CSS -->
+    <!--  https://bootswatch.com/cerulean/#forms-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-zF4BRsG/fLiTGfR9QL82DrilZxrwgY/+du4p/c7J72zZj+FLYq4zY00RylP9ZjiT"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="form-group has-success">
+        <form action="http://www.google.com/search">
+            <label class="control-label" for="inputSuccess">Let's search in Google</label>
+            <!-- name has to be q otherwise value could not transfer to google, google defined it -->
+            <input name="q" type="text" class="form-control" id="inputSuccess">
+            <input type="submit" />
+        </form>
+    </div>
+
+
+    <!-- dry version -->
+    <form action="http://www.google.com/search">
+        <div>  
+            <label>Let's search in Google</label>
+            <input name="q" />
+            <input type="submit" />
+        </div>
+    </form>
+
+</body>
+
+</html>
