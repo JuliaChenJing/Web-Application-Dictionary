@@ -1,31 +1,26 @@
 console.log("---------------------------OOP in JavaScript ---------------------------------------");
 
-//create an object called Teacher derived from the Person function constructor, and implement a method called teach which receives a string called subject, and prints out
 
-/* 1 Why is it considered to be a best practice to not include function definitions 
-   inside constructor functions, but instead put them on the Constructor.prototype property？
-
-      Because if it is inside function definition,its instance is created everytime constructoer 
-      is invoked, but if it is on constructors prototype property it is invoked only when it is called.
-*/
 
 console.log("//----------------------------------1  Object.create(student)--------------------------");
-var student = {
+var Student = {
     name: "Bimal Parajuli",
-    course: "Wweb Application Programming",
-    studentNo: 123456
+    course: "Web Application Programming",
+    studentNo: 985387
 };
 
 
-console.log("1-------");
-for (var key in student) {
-    console.log(key); // name, course, no
+console.log("1-------show all the keys");
+for (var key in Student) {
+    console.log(key); // name, course, studentNo
 }
-console.log("2-------");
-console.log(Object.keys(student)); // [name, course, no]
-stu = Object.create(student);
+console.log("2-------show all the keys in detail");
+console.log(Object.keys(Student)); // [name, course, no]
+
+// Object.create(student)
+stu = Object.create(Student);
 console.log("3-------");
-console.log(stu.name); // Asaad Saad
+console.log(stu.name); // Bimal Parajuli
 console.log("4-------");
 for (var key in stu) {
     console.log(key); // name, course, no
@@ -96,7 +91,14 @@ console.log(r.area());//50
 console.log(r.circumference())//30
 
 console.log("//---------------------------------------- 3  new F() constructor--------------------------");
+//create an object called Teacher derived from the Person function constructor, and implement a method called teach which receives a string called subject, and prints out
 
+/* 1 Why is it considered to be a best practice to not include function definitions 
+   inside constructor functions, but instead put them on the Constructor.prototype property？
+
+      Because if it is inside function definition,its instance is created everytime constructoer 
+      is invoked, but if it is on constructors prototype property it is invoked only when it is called.
+*/
 function Person(name) {
 
     this.name = name;
