@@ -15,6 +15,8 @@ var student = {
     course: "Wweb Application Programming",
     studentNo: 123456
 };
+
+
 console.log("1-------");
 for (var key in student) {
     console.log(key); // name, course, no
@@ -108,13 +110,13 @@ Person.prototype.teach = function (subject) {
 console.log(teacher.teach('Web Application Programming'));
 
 
-function Person2() {
+function Student() {
     console.log(this);
     this.university = 'MUM';
     year = '2016';
 }
-var faculty = new Person2(); // Person {university: "MUM"} – no year!
-Person2.prototype.great = function () {
+var faculty = new Student(); // Person {university: "MUM"} – no year!
+Student.prototype.great = function () {
     return 'Hi ' + this.university;
 }
 console.log(faculty.great()); // "Hi MUM"
