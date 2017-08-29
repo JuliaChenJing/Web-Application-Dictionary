@@ -1,4 +1,5 @@
 console.log("---------------------------OOP in JavaScript ---------------------------------------");
+http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html
 
 console.log("//----------------------------------1 Object.create(className)--------------------------");
 var Student = {
@@ -117,14 +118,30 @@ console.log("//---------------------------------------- 3  new F() constructor--
 function Person(name) {
 
     this.name = name;
+    this.saygoodbye=function(){ 
+        console.log("goodbye "+this.name);
+    };
 }
+new Person("Julia").saygoodbye();
+
 var teacher = new Person("Asaad");
+teacher.saygoodbye();
 //Every JavaScript object has a prototype. The prototype is also an object.
 //All JavaScript objects inherit their properties and methods from their prototype.
 Person.prototype.teach = function (subject) {
     return this.name + ' is teaching ' + subject;
 }
 console.log(teacher.teach('Web Application Programming'));
+
+Person.prototype.saygoodbye= function () {
+    console.log("see you later"+this.name);
+}
+teacher.saygoodbye();//does not work
+new Person("Julia").saygoodbye();//does not work
+teacher.saygoodbye= function () {
+    console.log("see you later "+this.name);
+}
+teacher.saygoodbye();
 
 
 function Student_2() {
@@ -133,10 +150,10 @@ function Student_2() {
     year = '2016';
 }
 var faculty = new Student_2(); // Person {university: "MUM"} – no year!
-Student_2.prototype.great = function () {
+Student_2.prototype.greet = function () {
     return 'Hi ' + this.university;
 }
-console.log(faculty.great()); // "Hi MUM"
+console.log(faculty.greet()); // "Hi MUM"
 
 
 // By convention we use capital first letter for function constructor
@@ -170,32 +187,10 @@ console.log(a.toString()); // "12"
 console.log(b.italics()); // "<i>Hello</i>"
 console.log(c.getMonth()); // 3
 
-console.log("//----------------------------------------4  Inheritance-------------------------");
+console.log("//-------------------------------------4--module pattern------------------------");
 
 
-/*
-http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html
-*/
 
-// An Object
-var course = {
-    coursename: 'Default',
-    register: function () {
-        return 'Register ' + this.coursename;
-    }
-}
-var mwp = Object.create(course);
-mwp.coursename = 'MWP';
-console.log("1------------------------------")
-console.log(mwp); // Object {coursename: "MWP"}
-console.log(mwp.__proto__); // course Object
-console.log(mwp.prototype); // undefined
-console.log("2------------------------------")
-console.log(course); // Object {coursename: "MWP"}
-console.log(course.__proto__); // undefined
-console.log(course.prototype); // undefined
-console.log("3------------------------------")
-console.log(mwp.register()); // Register MWP
 
 /*
 Question: write the following JavaScript code requirement in strict mode:
