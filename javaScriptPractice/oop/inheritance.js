@@ -8,7 +8,6 @@ function Employee() {
     this.dept = 'general';
 }
 
-
 function Manager() {
     Employee.call(this);
     this.reports = [];
