@@ -1,6 +1,5 @@
-
 console.log("//---------------------------------------- 3  new F() constructor--------------------------");
-//create an object called Teacher derived from the Person function constructor, and implement a method called teach which receives a string called subject, and prints out
+//create an object called Student derived from the Person function constructor, and implement a method called teach which receives a string called subject, and prints out
 
 /* 1 Why is it considered to be a best practice to not include function definitions 
    inside constructor functions, but instead put them on the Constructor.prototype property？
@@ -9,65 +8,37 @@ console.log("//---------------------------------------- 3  new F() constructor--
       is invoked, but if it is on constructors prototype property it is invoked only when it is called.
 */
 function Person(name) {
-
     this.name = name;
-    this.saygoodbye = function () {
-        console.log("goodbye " + this.name);
+    this.sayhello = function () {
+        console.log("hello, I am " + this.name);
     };
 }
-new Person("Julia").saygoodbye();
-
-var teacher = new Person("Asaad");
-teacher.saygoodbye();
-//Every JavaScript object has a prototype. The prototype is also an object.
-//All JavaScript objects inherit their properties and methods from their prototype.
-Person.prototype.teach = function (subject) {
-    return this.name + ' is teaching ' + subject;
-}
-console.log(teacher.teach('Web Application Programming'));
-
-Person.prototype.saygoodbye = function () {
-    console.log("see you later" + this.name);
-}
-teacher.saygoodbye();//does not work
-new Person("Julia").saygoodbye();//does not work
-teacher.saygoodbye = function () {
-    console.log("see you later " + this.name);
-}
-teacher.saygoodbye();
-
-function Student_2() {
-    console.log(this);
-    this.university = 'MUM';
-    year = '2016';
-}
-var faculty = new Student_2(); // Person {university: "MUM"} – no year!
-Student_2.prototype.greet = function () {
-    return 'Hi ' + this.university;
-}
-console.log(faculty.greet()); // "Hi MUM"
-
 
 // By convention we use capital first letter for function constructor
-function Course(coursename) {
-    this.coursename = coursename;
-    console.log("1--------------------")
-    console.log('Function Constructor Invoked!');
+var Student = new Person("Julia");//has a copy of name and sayhello
+console.log(Student);
+Student.sayhello();
+
+//Every JavaScript object has a prototype. The prototype is also an object.
+//All JavaScript objects inherit their properties and methods from their prototype.
+Person.prototype.saygoodbye = function (greet) {
+    console.log("goodbye " + this.name +" "+ greet);
 }
-Course.prototype.register = function () {
-    return 'Register ' + this.coursename;
+Student.saygoodbye('see you next time');
+
+console.log("0--------------------")
+Student.saygoodbye();//goodbye Julia undefined
+//override
+console.log("override--------------------")
+Student.saygoodbye = function () {
+    console.log("see you later " + this.name);
 }
-var wap = new Course('WAP'); // Function Constructor Invoked!
-console.log("2--------------------")
-console.log(wap); // Course {coursename: "WAP"}
-console.log("3--------------------")
-console.log(wap.__proto__); // Course.prototype
-console.log("4--------------------")
-console.log(wap instanceof Course); // true
-console.log("5--------------------")
-console.log(Course.prototype.register); // function(){ ... }
-console.log("6--------------------")
-console.log(wap.register()); // Register WAP
+Student.saygoodbye();//see you later Julia 
+Student.saygoodbye('see you next time');//see you later Julia
+
+
+
+
 
 var a = new Number(12);
 var b = new String("Hello");
