@@ -59,3 +59,21 @@ delete Student.studentNo;
 console.log("6-------delete Student.studentNo;---");
 console.log(Student);//{name: "Bimal Parajuli", course: "Web Application Programming"}
 console.log(student);
+
+
+let Rectangle = {
+    height: 0,
+    width: 0,
+    area: function () {
+        return this.height * this.width;
+    }
+}
+
+Rectangle.circumference = function () {
+    return (2 * this.height + 2 * this.width);
+}
+let r = Object.create(Rectangle);
+r.height = 5;
+r.width = 10;
+console.log(r.area());//50
+console.log(r.circumference())//30
