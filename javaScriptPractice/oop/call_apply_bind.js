@@ -13,7 +13,7 @@ var show = function (height, weight) { // ‘this’ refers to the invoker
 show.call(julia, '160cm', '50kg'); // Julia  Chen 160cm 50kg
 show.apply(julia, ['160cm', '50kg']); // Julia  Chen 160cm 50kg
 var bindHelper = show.bind(julia);
-bindHelper( '160cm', '50kg'); // Julia  Chen 160cm 50kg
+bindHelper('160cm', '50kg'); // Julia  Chen 160cm 50kg
 
 
 
@@ -33,3 +33,16 @@ var multipleByThree = multiply.bind({}, 3); // set a = 3
 console.log(multipleByThree(4)); // 12
 
 
+var obj = { num: 5 };
+
+var myMethod = function (a, b, c) {
+    return this.num + a + b + c;
+}
+console.log(myMethod.call(obj, 21, 10, 20));
+
+var array = [21, 10, 20];
+console.log(myMethod.apply(obj, array));
+
+var bound = myMethod.bind(obj);
+// console.dir(bound);        // function bound with myMethod 
+console.log(bound(21, 10, 20));
