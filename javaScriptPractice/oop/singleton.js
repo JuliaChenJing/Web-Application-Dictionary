@@ -1,14 +1,12 @@
-var Apple = new function () {
-    this.color = 'red';
-}
-var apple1 = Object.create(Apple);
-var apple2 = Object.create(Apple);
-console.log(apple1.color);//red
-console.log(apple2.color);//red
-console.log("Same apple? " + (apple1 === apple2));
+var banana1 = Object.create(Banana);
+var banana2 = Object.create(Banana);
+console.log(banana1.color);//undefined
+console.log(banana2.color);//undefined
+console.log(banana1.getColor());//undefined
+console.log(banana2.getColor());//undefined
+console.log("Same banana? " + (banana1 === banana2));
 
-
-
+//http://www.dofactory.com/javascript/singleton-design-pattern
 var Singleton = (function () {
     var instance;
 
