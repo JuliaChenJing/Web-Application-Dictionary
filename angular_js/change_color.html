@@ -9,7 +9,7 @@ AngularJS is distributed as a JavaScript file, and can be added to a web page wi
 
     <p>Change the value of the input field:</p>
 
-    <div ng-app="" ng-init="myCol='lightblue';quantity=1;cost=5">
+    <div ng-app="" ng-init="myCol='lightblue'">
 
         <input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}">
 
@@ -19,11 +19,19 @@ AngularJS is distributed as a JavaScript file, and can be added to a web page wi
 
         <p>The background color of the input box will be whatever you write in the input field.</p>
 
-        <h1>Total in dollar: {{ quantity * cost }}
-            <p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
-        </h1>
+        <div ng-app="" ng-init="quantity=1;cost=5">
+            <h1>Total in dollar: {{ quantity * cost }}
+                <p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
+            </h1>
+        </div>
 
-    </div>
+        <div ng-app="" ng-init="firstName='Julia'">
+
+            <p>The default name is <span ng-bind="firstName"></span></p>
+
+
+
+        </div>
 
 
 
