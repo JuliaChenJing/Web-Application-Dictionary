@@ -12,12 +12,27 @@ function Person(name) {
     this.sayhello = function () {
         console.log("hello, I am " + this.name);
     };
+
+    this.getName = function () {
+        return this.name;
+    };
+    this.setName = function (name) {
+        this.name = name;
+    };
 }
+
+
+var inst1 = new Person("Julia");
+
 
 // By convention we use capital first letter for function constructor
 var Student = new Person("Julia");//has a copy of name and sayhello
 console.log(Student);
 Student.sayhello();
+
+console.log(Student.getName());
+Student.setName("Bimal");
+console.log(Student.getName());
 
 //Every JavaScript object has a prototype. The prototype is also an object.
 //All JavaScript objects inherit their properties and methods from their prototype.
