@@ -22,7 +22,9 @@ function Person(name) {
 }
 
 
-var inst1 = new Person("Julia");
+instance = Object.create(Person.prototype);
+instance.setName("Bimal");
+console.log(instance.getName());
 
 
 // By convention we use capital first letter for function constructor
