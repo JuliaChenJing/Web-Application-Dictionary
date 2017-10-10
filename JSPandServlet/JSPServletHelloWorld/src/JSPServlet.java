@@ -1,6 +1,5 @@
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,12 +21,14 @@ public class JSPServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//decide which jsp file to show later
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Hello.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//decide which jsp file to show later
 		RequestDispatcher dispatcher = request.getRequestDispatcher("PostMessages.jsp");
 		dispatcher.forward(request, response);
 	}
