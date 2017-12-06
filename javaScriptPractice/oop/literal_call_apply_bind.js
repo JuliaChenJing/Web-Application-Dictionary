@@ -5,6 +5,17 @@
   another_prop: 'another string value', 
       int_prop: 100 }; 
 
+      1.	call attaches this into function and executes the function immediately:
+2.	apply is similar to call except that it takes an array-like object instead of listing the arguments out one at a time
+3.	bind attaches this into function and it needs to be invoked separately .
+
+Use .bind() when you want that function to later be called with a certain context, useful in events. 
+Use .call() or .apply() when you want to invoke the function immediately, and modify the context.
+
+Call/apply call the function immediately, whereas bind returns a function that, when later executed, will have the correct context set for calling the original function. This way you can maintain context in async callbacks and events.
+
+They all attach this into function (or object) and the difference is in the function invocation (see below).
+
 */
 console.log("//----------------------------------2 call() apply() bind()-----------------------------");
 var julia = {
