@@ -1,4 +1,5 @@
-//https://github.com/JuliaChenJing/Web_Application_Dictionary/edit/master/javaScriptPractice/promise_demo.js
+https://www.youtube.com/watch?v=s6SH72uAn3Q&t=29s
+
 newFunction();
 
 function newFunction() {
