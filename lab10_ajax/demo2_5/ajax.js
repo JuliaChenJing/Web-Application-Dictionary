@@ -7,9 +7,11 @@ $(document).ready(function () {
         $.ajax({
             url: 'https://learnwebcode.github.io/json-example/animals-1.json',
             type: 'GET',
+            "dataType": 'json',
             success: function (result) {
                 renderHTML(result);
-            }
+            },
+            "error": ajaxFailure
         });
     });
 });
@@ -46,3 +48,8 @@ function renderHTML(data) {
 
     animalContainer.insertAdjacentHTML('beforeend', htmlString);
 }
+
+function ajaxFailure(xhr, status, exception) {
+    console.log(xhr, status, exception);
+}
+
