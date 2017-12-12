@@ -1,85 +1,60 @@
-'use strict';
-$(function () {
+var pageCounter = 1;
+var animalContainer = document.getElementById("animal-info");
+var btn = document.getElementById("btn");
 
+btn.addEventListener("click", function () {
+    var ourRequest = new XMLHttpRequest();
+    ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-' + pageCounter + '.json');
+    ourRequest.onload = function () {
+        if (ourRequest.status >= 200 && ourRequest.status < 400) {
+            var ourData = JSON.parse(ourRequest.responseText);
+            renderHTML(ourData);
+        } else {
+            console.log("We connected to the server, but it returned an error.");
+        }
 
-    // loading 图标
-    $("#loader").hide();//隐藏loading图标
-    $(document).ajaxStart(function () { $("#loader").show(); })//控制loading图标的显示与否，一旦ajax起作用就开始显示图标
-        .ajaxStop(function () { $("#loader").hide(); });
+    };
 
-    //ajax for first go button click——————————————————————————————————————————————————————————————————————————————
-    $("#go").click(function () {//一旦第一个go被点击
-        console.log('button clicked');//随时输出一些log用来帮助编程
-        let userId = $('#inputValue').val();//val() 方法返回或设置被选元素的值
-        console.log('UserId--> ' + userId);
-        $.get("http://jsonplaceholder.typicode.com/users/" + userId)
-            .done(ajaxSuccess)
-            .fail(ajaxFailure);
+    ourRequest.onerror = function () {
+        console.log("Connection error");
+    };
 
-    });
-
-    // ajax for second go button click————————————————————————————————————————————————————————————————————————————
-    // Display all posts from selected user /posts?userId=1
-    $("#go2").click(function () {//一旦第一个go被点击
-        console.log(' button 2 clicked');
-        let userId = $('#inputValue2').val();
-        console.log('UserId--> ' + userId);
-        $.ajax({
-            "url": "http://jsonplaceholder.typicode.com/posts?userId=" + userId,
-            "type": "GET",
-            "dataType": 'json',
-            "success": ajaxSuccess2,
-            "error": ajaxFailure
-        });
-    });
-
-
-});
-// document ready closed------
-
-// comment ajax request
-$(document).on("click", ".showComment", function () {
-    console.log(' comment button clicked');
-    var postId = $(this).data('value');
-
-    $.ajax({
-        "url": "http://jsonplaceholder.typicode.com/comments?postId=" + postId,
-        "type": "GET",
-        "dataType": 'json',
-        "success": ajaxSuccess3,
-        "error": ajaxFailure
-    });
+    ourRequest.send();
+    pageCounter++;
+    if (pageCounter > 3) {
+        //btn.classList.add("hide-me");
+        btn.disabled = true;
+        btn.style.background='#42c5f4';
+    }
 });
 
-//the first button
-function ajaxSuccess(data) {
-    $('p#output').empty();//先清空旧内容
-    console.log('Responded data--->' + (data = JSON.stringify(data)));
-    $('p#output').html(data);
-}
-//the second button
-function ajaxSuccess2(data) {
-    $('p#output').empty();//先清空旧内容
-    $('<h3>').text('All-posts').appendTo('#output');
-    for (var i = 0; i < data.length; i++) {
-        $('<li>')
-            .text('userId-> ' + data[i].userId + '  id-> ' + data[i].id + '  title-> ' + data[i].title)
-            .appendTo('#output');
+function renderHTML(data) {
+    var htmlString = "";
 
-        //   add button and paragraph
-        $('<button class="showComment" data-value="' + data[i].id + '" style= "Position:Absolute; right:50px; ">showComment</button><br />' +
-            '<p id="outputComment' + data[i].id + '" data-value="' + data[i].id + '"></p><br />')
-            .appendTo('#output');
+    for (i = 0; i < data.length; i++) {
+        htmlString += "<p>" + data[i].name + " is a " + data[i].species + " that likes to eat ";
+
+        for (ii = 0; ii < data[i].foods.likes.length; ii++) {
+            if (ii == 0) {
+                htmlString += data[i].foods.likes[ii];
+            } else {
+                htmlString += " and " + data[i].foods.likes[ii];
+            }
+        }
+
+        htmlString += ' and dislikes ';
+
+        for (ii = 0; ii < data[i].foods.dislikes.length; ii++) {
+            if (ii == 0) {
+                htmlString += data[i].foods.dislikes[ii];
+            } else {
+                htmlString += " and " + data[i].foods.dislikes[ii];
+            }
+        }
+
+        htmlString += '.</p>';
+
     }
-}
-//comment button 
-function ajaxSuccess3(data) {
-    for (var i = 0; i < data.length; i++) {
-        $('p#outputComment' + data[i].postId).html(data[i].body);
-    }
-}
 
-function ajaxFailure(xhr, status, exception) {
-    console.log(xhr, status, exception);
+    animalContainer.insertAdjacentHTML('beforeend', htmlString);
 }
-
