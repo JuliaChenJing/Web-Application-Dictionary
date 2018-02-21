@@ -1,3 +1,32 @@
-<p>
-  select works!
-</p>
+select works
+<!-- <div class="ui segments">
+    <div class="ui segment">
+        <ng-template let-option #optionTemplate>
+            <i class="child icon"></i>{{ option.name }}
+        </ng-template>
+        <p><strong>Template</strong></p>
+        <p>Note: You must still provide a <code>labelField</code> to support searching.</p>
+        <sui-select class="selection"
+                    [(ngModel)]="selectedOption"
+                    [options]="options"
+                    labelField="name"
+                    [optionTemplate]="optionTemplate"
+                    [isSearchable]="true"
+                    #templated>
+            <sui-select-option *ngFor="let o of templated.filteredOptions" [value]="o"></sui-select-option>
+        </sui-select>
+    </div>
+    <div class="ui segment">
+        <p><strong>Formatter</strong></p>
+        <sui-select class="selection"
+                    [(ngModel)]="selectedOption"
+                    [options]="options"
+                    [optionFormatter]="formatter"
+                    #formatted>
+            <sui-select-option *ngFor="let o of formatted.filteredOptions" [value]="o"></sui-select-option>
+        </sui-select>
+    </div>
+    <div class="ui segment">
+        <p>Selected: {{ selectedOption | json }}</p>
+    </div>
+</div> -->

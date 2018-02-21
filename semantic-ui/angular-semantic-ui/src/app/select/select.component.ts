@@ -12,4 +12,8 @@ export class SelectComponent implements OnInit {
   ngOnInit() {
   }
 
+  public formatter(option: IOption, query?: string): string {
+    return `name: "${option.name}"`;
+  }
+
 }
