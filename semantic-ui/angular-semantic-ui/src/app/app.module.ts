@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CheatSheetComponent } from './cheat-sheet/cheat-sheet.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { SelectComponent } from './select/select.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     CheatSheetComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule
